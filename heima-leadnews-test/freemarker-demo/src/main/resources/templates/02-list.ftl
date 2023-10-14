@@ -5,6 +5,29 @@
     <title>Hello World!</title>
 </head>
 <body>
+<div>
+    <p>内置函数：</p>
+    <p>
+        1. 集合的大小
+        ${stus?size}
+    </p>
+    <p>
+        2. 日期格式化
+        当前日期：${today?datetime}
+        当前日期：${today?string("yyyy年MM月")}
+    </p>
+    <p>
+        3. c,数字转字符串
+        ${point} to ${point?c}
+    </p>
+    <p>
+        4. JSON字符串转对象
+        <#assign text="{'name':'值'}" />
+        <#assign data=text?eval />
+        对象值：${data.name}
+    </p>
+  
+</div>
 
 <#-- list 数据的展示 -->
 <b>展示list中的stu数据:</b>
@@ -71,7 +94,6 @@
         </tr
     </#list>
 </table>
-<hr>
 
 </body>
 </html>
