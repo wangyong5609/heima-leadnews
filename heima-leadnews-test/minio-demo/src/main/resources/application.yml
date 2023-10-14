@@ -1,0 +1,6 @@
+minio:
+  accessKey: iRS32pFqZ5vHnXJkJQMI
+  secretKey: 4i2C5D3EYqicEJ18lErPyxLITROwWdHbHhQEYDsA
+  bucket: leadnews
+  endpoint: http://192.168.88.11:9000
+  readPath: http://192.168.88.11:9000
