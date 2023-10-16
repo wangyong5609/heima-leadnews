@@ -49,10 +49,10 @@ public class AuthorizeFilter implements Ordered, GlobalFilter {
                 return response.setComplete();
             }
             // 获取用户ID
-            String id = claimsBody.getId();
+            Object id = claimsBody.get("id");
             // 存入header
             ServerHttpRequest serverHttpRequest = request.mutate().headers(httpHeaders -> {
-                httpHeaders.add("userId", id);
+                httpHeaders.add("userId", id.toString());
             }).build();
             // 重置请求
             exchange.mutate().request(serverHttpRequest);

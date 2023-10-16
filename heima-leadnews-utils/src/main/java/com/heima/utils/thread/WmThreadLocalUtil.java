@@ -9,8 +9,8 @@ public class WmThreadLocalUtil {
         WM_USER_THREAD_LOCAL.set(wmUser);
     }
 
-    public static void getUser() {
-        WM_USER_THREAD_LOCAL.get();
+    public static WmUser getUser() {
+        return WM_USER_THREAD_LOCAL.get();
     }
     public static void clear() {
         WM_USER_THREAD_LOCAL.remove();
