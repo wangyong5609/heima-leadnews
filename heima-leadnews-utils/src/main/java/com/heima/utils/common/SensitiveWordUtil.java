@@ -3,6 +3,10 @@ package com.heima.utils.common;
 
 import java.util.*;
 
+/**
+ * 敏感词过滤
+ * DFA全称为：Deterministic Finite Automaton,即确定有穷自动机
+ */
 public class SensitiveWordUtil {
 
     public static Map<String, Object> dictionaryMap = new HashMap<>();
