@@ -29,4 +29,9 @@ public class TaskServiceImplTest {
 
         System.out.println(service.addTask(task));
     }
+
+    @Test
+    public void cancelTask() {
+        service.cancelTask(1718981966196105218L);
+    }
 }
