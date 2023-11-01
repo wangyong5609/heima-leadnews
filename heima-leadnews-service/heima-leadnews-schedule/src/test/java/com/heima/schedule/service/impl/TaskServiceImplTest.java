@@ -23,8 +23,8 @@ public class TaskServiceImplTest {
             Task task = new Task();
             task.setParameters("parameters".getBytes());
             task.setPriority(80);
-            task.setExecuteTime(System.currentTimeMillis() + 500 * i);
-            task.setTaskType(11);
+            task.setExecuteTime(System.currentTimeMillis() + 1000 * i);
+            task.setTaskType(i);
             System.out.println(service.addTask(task));
         }
     }
