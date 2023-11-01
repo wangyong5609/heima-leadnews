@@ -200,8 +200,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Scheduled(cron = "0 */1 * * * ?")
     public void refresh() {
-        System.out.println(System.currentTimeMillis() / 1000 + "执行了定时任务");
-
+        String token = cacheService.tryLock("FUTURE_TASK_SYNC", 1000 * 30);
+        if (token == null) {
+            log.warn("加锁失败");
+            return;
+        }
+        log.warn("加锁成功，开始执行任务：{}", System.currentTimeMillis());
         // 获取所有未来数据集合的key值
         Set<String> futureKeys = cacheService.scan(ScheduleConstants.FUTURE + "*");// future_*
         for (String futureKey : futureKeys) { // future_250_250
