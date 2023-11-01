@@ -34,4 +34,10 @@ public class TaskServiceImplTest {
     public void cancelTask() {
         service.cancelTask(1718981966196105218L);
     }
+
+    @Test
+    public void pollTask() {
+        Task poll = service.poll(11, 80);
+        System.out.println(poll);
+    }
 }
