@@ -13,5 +13,8 @@ public interface WmNewsTaskService {
      */
     void addNewsToTask(Integer id, Date publishTime);
 
-
+    /**
+     * 消费延迟队列数据
+     */
+    void scanNewsByTask();
 }
