@@ -18,7 +18,11 @@ public class Producer {
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
         //消息value的序列化器
         properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,"org.apache.kafka.common.serialization.StringSerializer");
-
+        // ack 消息确认机制
+        properties.put(ProducerConfig.ACKS_CONFIG, "all");
+        // 压缩类型
+        properties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
+        
         //2.生产者对象
         KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
 
