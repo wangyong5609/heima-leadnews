@@ -39,4 +39,14 @@ rm -rf elasticsearch-analysis-ik-7.4.0.zip
 
 ## 4.在postman测试一下
 
+post请求：192.168.88.11:9200/_analyze
+
+Json请求体：
+
+```json
+{
+	"analyzer":"ik_max_word",
+	"text":"黑马头条elasticsearch测试"
+}
+```
 ![img.png](img.png)
