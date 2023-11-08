@@ -26,7 +26,7 @@ public class ApUserSearchController {
 
     @PostMapping("/load")
     public ResponseResult findUserSearch() {
-        return ResponseResult.okResult(apUserSearchService.findUserSearch());
+        return apUserSearchService.findUserSearch();
     }
 
     @PostMapping("/del")
