@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>heima-leadnews-schedule</artifactId>
+    <artifactId>heima-leadnews-admin</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -23,7 +23,7 @@
                 <configuration>
                     <finalName>${project.name}</finalName>
                     <!--填写启动类的路径-->
-                    <mainClass>com.heima.schedule.ScheduleApplication</mainClass>
+                    <mainClass>com.heima.admin.AdminApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
