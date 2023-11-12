@@ -7,4 +7,4 @@ xxl:
       addresses: http://192.168.88.11:8888/xxl-job-admin
     executor:
       appname: xxl-job-executor-sample
-      port: 9999
+      port: ${excutor.port:9999}
