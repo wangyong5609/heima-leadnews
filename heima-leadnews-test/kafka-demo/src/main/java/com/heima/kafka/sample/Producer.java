@@ -26,12 +26,14 @@ public class Producer {
         //2.生产者对象
         KafkaProducer<String,String> producer = new KafkaProducer<>(properties);
 
-        //封装发送的消息
-        ProducerRecord<String,String> record = new ProducerRecord<>("itheima-topic", "100001", "hello kafka");
+        for (int i = 0; i < 8; i++) {
+            //封装发送的消息
+            ProducerRecord<String, String> record = new ProducerRecord<>("itcast-topic-input", "100001", "hello kafka");
 
-        //3.发送消息
-        producer.send(record);
+            //3.发送消息
+            producer.send(record);
 
+        }
         //4.关闭消息通道，必须关闭，否则消息发送不成功
         producer.close();
     }

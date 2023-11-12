@@ -24,7 +24,7 @@ public class Consumer {
         //2.消费者对象
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
         //3.订阅主题
-        consumer.subscribe(Collections.singletonList("itheima-topic"));
+        consumer.subscribe(Collections.singletonList("itcast-topic-out"));
 
         commitWithSyncAndAsync(consumer);
     }
