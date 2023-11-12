@@ -6,5 +6,5 @@ xxl:
     admin:
       addresses: http://192.168.88.11:8888/xxl-job-admin
     executor:
-      appname: xxl-job-executor-sample
+      appname: sharding-executor
       port: ${excutor.port:9999}
