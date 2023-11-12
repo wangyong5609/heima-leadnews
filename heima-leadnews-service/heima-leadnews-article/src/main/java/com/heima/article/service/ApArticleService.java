@@ -5,6 +5,7 @@ import com.heima.model.article.dtos.ArticleDto;
 import com.heima.model.article.dtos.ArticleHomeDto;
 import com.heima.model.article.pojos.ApArticle;
 import com.heima.model.common.dtos.ResponseResult;
+import com.heima.model.mess.ArticleVisitStreamMess;
 
 public interface ApArticleService extends IService<ApArticle> {
     /**
@@ -32,4 +33,12 @@ public interface ApArticleService extends IService<ApArticle> {
      * @return
      */
     ResponseResult saveArticle(ArticleDto dto);
+
+
+    /**
+     * 更新文章的分值  同时更新缓存中的热点文章数据
+     *
+     * @param mess
+     */
+    void updateScore(ArticleVisitStreamMess mess);
 }
