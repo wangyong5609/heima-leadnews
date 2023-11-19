@@ -88,3 +88,41 @@ rm -rf /usr/local/maven/apache-maven-3.3.9/repository_heima-leannews/com/fasterx
 [ERROR] 
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 ```
+
+解决：删除java:8镜像，重新拉取
+
+6. Jenkins从本地仓库拉取镜像创建容器报错：docker: Error response from daemon: Get "https://192.168.88.12:5000/v2/": http:
+   server gave HTTP response to HTTPS client.
+
+这个错误通常是由于 Docker 默认使用 HTTPS 来与 Docker Registry 通信，但是你的 Docker Registry 可能只支持
+HTTP。你可以通过以下步骤来解决这个问题：
+
+1. 打开或创建 Docker 的守护进程配置文件。这个文件通常位于 `/etc/docker/daemon.json`。
+
+```bash
+sudo vi /etc/docker/daemon.json
+```
+
+1. 在这个文件中添加 `insecure-registries` 配置，指定你的 Docker Registry 的地址。
+
+```json
+{
+  "insecure-registries": [
+    "192.168.88.12:5000"
+  ]
+}
+```
+
+在这里，`192.168.88.12:5000` 是你的 Docker Registry 的地址。
+
+1. 保存并关闭文件。
+2. 重启 Docker 服务来使改动生效：
+
+```bash
+sudo systemctl restart docker
+```
+
+希望这些信息对你有所帮助！
+
+
+
