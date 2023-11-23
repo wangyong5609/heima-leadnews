@@ -37,7 +37,24 @@ scrape_configs:
     scrape_interval: 8s
     static_configs:
     - targets: ['192.168.88.11:8088', '192.168.88.12:8088']
+  - job_name: 'mysql'
+    static_configs:
+      - targets: [ 'mysqld-exporter:9104' ]
+  - job_name: 'redis'
+    static_configs:
+      - targets: [ 'redis-exporter:9121' ]
 
+  - job_name: 'elasticsearch'
+    static_configs:
+      - targets: [ 'elasticsearch-exporter:9108' ]
+
+  - job_name: 'kafka'
+    static_configs:
+      - targets: [ 'kafka-exporter:9308' ]
+
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: [ 'mongodb-exporter:9216' ]
 ```
 
 接着进行创建 `node_down.yml`, 添加如下内容：
@@ -115,6 +132,42 @@ services:
             - "8088:8080"
         networks:
             - monitor
+    mysqld-exporter:
+      image: prom/mysqld-exporter
+      container_name: mysqld-exporter
+      environment:
+        DATA_SOURCE_NAME: 'root:root@(192.168.88.11:3306)/'
+      ports:
+        - "9104:9104"
+      networks:
+        - monitor
+    redis-exporter:
+      image: oliver006/redis_exporter
+      container_name: redis_exporter
+      environment:
+        - REDIS_ADDR=192.168.88.11:6379
+      ports:
+        - "9121:9121"
+      networks:
+        - monitor
+    elasticsearch-exporter:
+      image: justwatch/elasticsearch_exporter:1.1.0
+      ports:
+        - "9108:9108"
+      networks:
+        - monitor
+    kafka-exporter:
+      image: danielqsj/kafka-exporter
+      ports:
+        - "9308:9308"
+      networks:
+        - monitor
+    mongodb-exporter:
+      image: bitnami/mongodb-exporter:latest
+      ports:
+        - "9216:9216"
+      networks:
+        - monitor
 
 ```
 
